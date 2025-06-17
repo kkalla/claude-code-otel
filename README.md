@@ -6,6 +6,22 @@
 
 A comprehensive observability solution for monitoring Claude Code usage, performance, and costs. This setup implements the recommendations from the [Claude Code Observability Documentation](CLAUDE_OBSERVABILITY.md) to provide deep insights into AI-assisted development workflows.
 
+## 📸 Dashboard Screenshots
+
+### 💰 Cost & Usage Analysis
+Track spending across different Claude models with detailed breakdowns of costs, API requests, and token usage patterns.
+
+<img src="docs/images/cost-usage-analytics.png" alt="Cost & Usage Analysis Dashboard" width="800">
+
+*Features: Model cost comparison, API request tracking, token usage breakdown by type*
+
+### 📊 User Activity & Productivity 
+Monitor development productivity with comprehensive session analytics, tool usage patterns, and code change metrics.
+
+<img src="docs/images/user-activity.png" alt="User Activity & Productivity Dashboard" width="800">
+
+*Features: Session tracking, tool performance metrics, code productivity insights*
+
 ## 🎯 Features
 
 ### 📊 **Comprehensive Monitoring**
@@ -79,6 +95,8 @@ claude
 - **Grafana**: http://localhost:3000 (admin/admin)
 - **Prometheus**: http://localhost:9090
 
+> 🖼️ **Visual Guide**: Check out the [Dashboard Screenshots](#-dashboard-screenshots) to see what your dashboards will look like!
+
 ## 📊 Available Metrics
 
 Based on the [Claude Code Observability Documentation](CLAUDE_OBSERVABILITY.md), this stack monitors:
@@ -120,9 +138,11 @@ Access comprehensive analytics through the Grafana dashboard at http://localhost
 
 ## 📊 Key Dashboard Features
 
+> 💡 **See [Dashboard Screenshots](#-dashboard-screenshots) above for visual examples**
+
 ### 💰 Cost & Usage Analysis
 - **Cost by Model**: Track spending across different Claude models
-- **API Request Tracking**: Monitor actual request counts by model version
+- **API Request Tracking**: Monitor actual request counts by model version  
 - **Token Usage Breakdown**: Detailed analysis by token type (input/output/cache)
 
 ### 🔧 Tool Performance
