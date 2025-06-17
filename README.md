@@ -117,7 +117,6 @@ Access comprehensive analytics through the Grafana dashboard at http://localhost
 - Token usage breakdown (input/output/cache/creation)
 - Tool usage patterns and success rates
 - Session activity and code productivity metrics
-```
 
 ## 📊 Key Dashboard Features
 
