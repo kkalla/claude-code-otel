@@ -26,7 +26,12 @@
     {
       "title": "📊 Overview",
       "type": "row",
-      "gridPos": {"h": 1, "w": 24, "x": 0, "y": 0},
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
       "collapsed": false
     },
     {
@@ -75,7 +80,9 @@
         "orientation": "auto",
         "reduceOptions": {
           "values": false,
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": ""
         },
         "textMode": "auto"
@@ -141,7 +148,9 @@
         "orientation": "auto",
         "reduceOptions": {
           "values": false,
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": ""
         },
         "textMode": "auto"
@@ -207,7 +216,9 @@
         "orientation": "auto",
         "reduceOptions": {
           "values": false,
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": ""
         },
         "textMode": "auto"
@@ -273,7 +284,9 @@
         "orientation": "auto",
         "reduceOptions": {
           "values": false,
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": ""
         },
         "textMode": "auto"
@@ -294,9 +307,288 @@
       "type": "stat"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 70
+              },
+              {
+                "color": "red",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 5
+      },
+      "id": 20,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "values": false,
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": ""
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "expr": "clamp_max((sum(increase(claude_code_token_usage_tokens_total{job=\"otel-collector\"}[5h])) / 4000000) * 100, 100)",
+          "interval": "",
+          "legendFormat": "5시간 토큰 사용률",
+          "refId": "A"
+        }
+      ],
+      "title": "🕐 Claude Pro 5시간 토큰 사용률 (~4M 토큰 한도)",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 70
+              },
+              {
+                "color": "red",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 5
+      },
+      "id": 21,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "values": false,
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": ""
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "expr": "clamp_max((sum(increase(claude_code_token_usage_tokens_total{job=\"otel-collector\"}[7d])) / 40000000) * 100, 100)",
+          "interval": "",
+          "legendFormat": "1주 토큰 사용률",
+          "refId": "A"
+        }
+      ],
+      "title": "📅 Claude Pro 1주 토큰 사용률 (~40M 토큰 한도)",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 3.5
+              },
+              {
+                "color": "red",
+                "value": 4.5
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 0,
+        "y": 13
+      },
+      "id": 22,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "values": false,
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": ""
+        },
+        "textMode": "auto"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "expr": "sum(increase(claude_code_cost_usage_USD_total{job=\"otel-collector\"}[5h]))",
+          "interval": "",
+          "legendFormat": "5시간 비용",
+          "refId": "A"
+        }
+      ],
+      "title": "⏰ 5시간 내 비용",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 20
+              },
+              {
+                "color": "red",
+                "value": 23
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 6,
+        "y": 13
+      },
+      "id": 23,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "values": false,
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": ""
+        },
+        "textMode": "auto"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "expr": "sum(increase(claude_code_cost_usage_USD_total{job=\"otel-collector\"}[7d]))",
+          "interval": "",
+          "legendFormat": "1주 사용 비용",
+          "refId": "A"
+        }
+      ],
+      "title": "💵 1주 사용 비용",
+      "type": "stat"
+    },
+    {
       "title": "💰 Cost & Usage Analysis",
       "type": "row",
-      "gridPos": {"h": 1, "w": 24, "x": 0, "y": 5},
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 17
+      },
       "collapsed": false
     },
     {
@@ -359,12 +651,15 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 6
+        "y": 18
       },
       "id": 5,
       "options": {
         "legend": {
-          "calcs": ["max", "mean"],
+          "calcs": [
+            "max",
+            "mean"
+          ],
           "displayMode": "table",
           "placement": "bottom"
         },
@@ -526,12 +821,15 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 6
+        "y": 17
       },
       "id": 6,
       "options": {
         "legend": {
-          "calcs": ["max", "mean"],
+          "calcs": [
+            "max",
+            "mean"
+          ],
           "displayMode": "table",
           "placement": "bottom"
         },
@@ -654,12 +952,16 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 14
+        "y": 18
       },
       "id": 15,
       "options": {
         "legend": {
-          "calcs": ["lastNotNull", "max", "mean"],
+          "calcs": [
+            "lastNotNull",
+            "max",
+            "mean"
+          ],
           "displayMode": "table",
           "placement": "bottom"
         },
@@ -686,7 +988,12 @@
     {
       "title": "🔧 Tool Usage & Performance",
       "type": "row",
-      "gridPos": {"h": 1, "w": 24, "x": 0, "y": 22},
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 34
+      },
       "collapsed": false
     },
     {
@@ -819,12 +1126,15 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 23
+        "y": 35
       },
       "id": 7,
       "options": {
         "legend": {
-          "calcs": ["lastNotNull", "mean"],
+          "calcs": [
+            "lastNotNull",
+            "mean"
+          ],
           "displayMode": "table",
           "placement": "bottom",
           "showLegend": true
@@ -971,12 +1281,15 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 23
+        "y": 35
       },
       "id": 14,
       "options": {
         "legend": {
-          "calcs": ["lastNotNull", "max"],
+          "calcs": [
+            "lastNotNull",
+            "max"
+          ],
           "displayMode": "table",
           "placement": "bottom",
           "showLegend": true
@@ -1067,12 +1380,14 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 23
+        "y": 35
       },
       "id": 8,
       "options": {
         "legend": {
-          "calcs": ["last"],
+          "calcs": [
+            "last"
+          ],
           "displayMode": "table",
           "placement": "bottom"
         },
@@ -1099,7 +1414,12 @@
     {
       "title": "⚡ Performance & Errors",
       "type": "row",
-      "gridPos": {"h": 1, "w": 24, "x": 0, "y": 39},
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 51
+      },
       "collapsed": false
     },
     {
@@ -1162,12 +1482,15 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 40
+        "y": 52
       },
       "id": 9,
       "options": {
         "legend": {
-          "calcs": ["mean", "max"],
+          "calcs": [
+            "mean",
+            "max"
+          ],
           "displayMode": "table",
           "placement": "bottom"
         },
@@ -1251,12 +1574,14 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 40
+        "y": 52
       },
       "id": 10,
       "options": {
         "legend": {
-          "calcs": ["sum"],
+          "calcs": [
+            "sum"
+          ],
           "displayMode": "table",
           "placement": "bottom"
         },
@@ -1283,7 +1608,12 @@
     {
       "title": "📝 User Activity & Productivity",
       "type": "row",
-      "gridPos": {"h": 1, "w": 24, "x": 0, "y": 48},
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 52
+      },
       "collapsed": false
     },
     {
@@ -1346,12 +1676,14 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 49
+        "y": 69
       },
       "id": 11,
       "options": {
         "legend": {
-          "calcs": ["sum"],
+          "calcs": [
+            "sum"
+          ],
           "displayMode": "table",
           "placement": "bottom"
         },
@@ -1435,12 +1767,14 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 49
+        "y": 69
       },
       "id": 12,
       "options": {
         "legend": {
-          "calcs": ["sum"],
+          "calcs": [
+            "sum"
+          ],
           "displayMode": "table",
           "placement": "bottom"
         },
@@ -1477,7 +1811,12 @@
     {
       "title": "🔍 Event Logs",
       "type": "row",
-      "gridPos": {"h": 1, "w": 24, "x": 0, "y": 57},
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 69
+      },
       "collapsed": false
     },
     {
@@ -1489,7 +1828,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 58
+        "y": 70
       },
       "id": 13,
       "options": {
@@ -1524,7 +1863,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 58
+        "y": 70
       },
       "id": 17,
       "options": {
@@ -1554,7 +1893,10 @@
   "refresh": "30s",
   "schemaVersion": 27,
   "style": "dark",
-  "tags": ["claude-code", "observability"],
+  "tags": [
+    "claude-code",
+    "observability"
+  ],
   "templating": {
     "list": []
   },
