@@ -366,13 +366,13 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "clamp_max((sum(increase(claude_code_token_usage_tokens_total{job=\"otel-collector\"}[5h])) / 4000000) * 100, 100)",
+          "expr": "clamp_max((sum(increase(claude_code_token_usage_tokens_total{job=\"otel-collector\"}[5h])) / 10000000) * 100, 100)",
           "interval": "",
           "legendFormat": "5시간 토큰 사용률",
           "refId": "A"
         }
       ],
-      "title": "🕐 Claude Pro 5시간 토큰 사용률 (~4M 토큰 한도)",
+      "title": "🕐 Claude Pro 5시간 토큰 사용률 (~10M 토큰 한도)",
       "type": "gauge"
     },
     {
@@ -435,13 +435,13 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "clamp_max((sum(increase(claude_code_token_usage_tokens_total{job=\"otel-collector\"}[7d])) / 40000000) * 100, 100)",
+          "expr": "clamp_max((sum(increase(claude_code_token_usage_tokens_total{job=\"otel-collector\"}[7d])) / 100000000) * 100, 100)",
           "interval": "",
           "legendFormat": "1주 토큰 사용률",
           "refId": "A"
         }
       ],
-      "title": "📅 Claude Pro 1주 토큰 사용률 (~40M 토큰 한도)",
+      "title": "📅 Claude Pro 1주 토큰 사용률 (~100M 토큰 한도)",
       "type": "gauge"
     },
     {
